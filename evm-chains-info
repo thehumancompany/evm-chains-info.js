@@ -227,7 +227,8 @@ function
     networks_all =
       "n";
   }
-  _db_path_auto_detect();
+  _db_path_auto_detect(
+    target_chain);
 }
 
 function

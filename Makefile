@@ -72,7 +72,8 @@ eslint:
 
 	npm \
 	  install \
-	  --save-dev; \
+	  --save-dev \
+	  "."; \
 	npx \
 	  eslint \
 	    "."
@@ -145,12 +146,19 @@ build-npm:
 	      "$${PWD}" \
 	      "version")"; \
 	npm \
-	  install; \
+	  install \
+	  "."; \
 	npm \
 	  run \
 	    "build"; \
 	npm \
+	  install \
+	  "."; \
+	npm \
 	  pack; \
+	chmod \
+	  +x \
+	  "evm-chains-info"; \
 	mv \
 	  "$(_PROJECT_NPM)-$${_version}.tgz" \
 	  ".."

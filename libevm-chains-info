@@ -31,8 +31,6 @@
 /* eslint-disable
      no-unused-vars */
 
-/* global
-     chain_id */
 /* global 
      db_paths */
 /* global
@@ -65,6 +63,12 @@ _file_exists =
      no-global-assign */
 _json_read =
   _libcrash_module._json_read;
+/* global
+     _lib_get */
+/* eslint-disable-next-line
+     no-global-assign */
+_lib_get =
+  _libcrash_module._lib_get;
 /* global
      _msg_info */
 /* eslint-disable-next-line
@@ -148,17 +152,22 @@ function
     }
   }
   if ( _user == false ) {
+    console.log(
+      process.env.NODE_PATH);
+    const
+      _lib =
+        _lib_get();
     _db_path =
       _path_join(
-        [ process.env.NODE_PATH,
-          "..",
+        [ _lib,
           "evm-chains",
           "chains.json" ]);
   }
   else {
     const
       _msg =
-        "Input variable '_user' must be a boolean.";
+        "Input variable '_user' must be a boolean. " +
+        `_user value is '${_user}'.`;
     _msg_error(
       _msg,
       0);
@@ -421,22 +430,23 @@ function
 }
 
 function
-  _db_path_auto_detect() {
+  _db_path_auto_detect(
+    _chain_id) {
   let
     _type_primary,
     _type_fallback,
     _msg;
   if ( user_level == "y" ) {
     _type_primary =
-      "user";
+      true;
     _type_fallback =
-      "system";
+      false;
   }
   else if ( user_level == "n" ) {
     _type_primary =
-      "system";
+      true;
     _type_fallback =
-      "user";
+      false;
   }
   const
     _db =
@@ -448,7 +458,7 @@ function
     _db_split =
       _evm_chains_db_path_get(
         _type_primary,
-        chain_id,
+        _chain_id,
         "split");
   const
     _db_fallback =
@@ -460,7 +470,7 @@ function
     _db_fallback_split =
       _evm_chains_db_path_get(
         _type_fallback,
-        chain_id,
+        _chain_id,
         "split");
   if ( _file_exists(
            _db_split) ) {
