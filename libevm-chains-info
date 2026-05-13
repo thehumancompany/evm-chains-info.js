@@ -504,5 +504,5 @@ module.exports = {
   _rpc_backend_get:
     _rpc_backend_get,
   _rpc_backends_get:
-    _rpc_backends_get;
+    _rpc_backends_get
 }
