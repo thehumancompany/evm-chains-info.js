@@ -417,6 +417,9 @@ function
       [];
     console.log(
       _results);
+    _db =
+      _json_read(
+        _db_path);
   }
   else if ( _networks_all == "n" ) {
     _msg =
@@ -437,13 +440,18 @@ function
       _db =
         _json_read(
           _db_path);
+    _msg =
+      `Database '${_db_path}' ` +
+      `contains '${_db.length}' items.`;
+    _msg_info(
+      _msg);
     return _db;
     // _results =
     //   [];
     // console.log(
     //   _results);
   }
-  // return _db;
+  return _db;
 }
 
 function
