@@ -105,7 +105,8 @@ function
     _format) {
   let
     _db_name,
-    _db_path;
+    _db_path,
+    _msg;
   if ( typeof(
          _user) == "undefined" ) {
     _user =
@@ -127,6 +128,13 @@ function
       "unified";
     }
   }
+  _msg =
+    `Getting path for chain ` +
+    `with chain id '${_chain_id}' ` +
+    `with privilege user set to ` +
+    `'${_user}' in format '${_format}'.`;
+  _msg_info(
+    _msg);
   if ( _format == "unified" ) {
     _db_name =
       "chains.json";
@@ -162,10 +170,9 @@ function
           "chains.json" ]);
   }
   else {
-    const
-      _msg =
-        "Input variable '_user' must be a boolean. " +
-        `_user value is '${_user}'.`;
+    _msg =
+      "Input variable '_user' must be a boolean. " +
+      `_user value is '${_user}'.`;
     _msg_error(
       _msg,
       0);
@@ -364,10 +371,12 @@ function
          no-useless-assignment */
     _filter_key =
       "chainId";
-    _filter_key =
+    _filter_value =
       _target_chain;
     _msg =
-      `Filter key: ${_filter_key}`;
+      `Getting data for filter ` +
+      `key: '${_filter_key}' and value ` +
+      `'${_filter_value}'.`;
     _msg_info(
       _msg);
   }
