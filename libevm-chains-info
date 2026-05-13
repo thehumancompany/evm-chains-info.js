@@ -415,14 +415,13 @@ function
       _db =
         _json_read(
           _db_path);
+    return _db;
+    // _results =
+    //   [];
     // console.log(
-    //   _db);
-    _results =
-      [];
-    console.log(
-      _results);
+    //   _results);
   }
-  return _db;
+  // return _db;
 }
 
 function
@@ -607,8 +606,11 @@ function
       }
     }
     else if ( _input_type == "amount" ) {
-      console.log(
-        _networks_total);
+      _msg =
+        `Found '${_networks_total}' networks.`;
+      _msg_info(
+        _msg);
+      return _networks_total;
     }
   }
   else if ( _retrieval_mode == "online" ) {
