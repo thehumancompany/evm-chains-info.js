@@ -32,10 +32,15 @@ const
   require(
     'crash-js');
 /* global
+     _argv_get */
+const
+  _argv_get =
+    _libcrash._argv_get;
+/* global
      _argv_url_get */
 const
-_argv_url_get =
-  _libcrash._argv_url_get;
+  _argv_url_get =
+    _libcrash._argv_url_get;
 /* global
      _cmdline_check */
 const
@@ -57,10 +62,10 @@ const
   _msg_error =
     _libcrash._msg_error;
 /* global
-     _argv_get */
+     _process_exit */
 const
-_argv_get =
-  _libcrash._argv_get;
+_process_exit =
+  _libcrash._process_exit;
 
 const
   _libevm_chains_info =
@@ -252,59 +257,59 @@ function
   _usage(
     _exit_code) {
   let
-    _line,
-    _text;
-  _text = [
-    "Returns info about EVM blockchains.",
-    "",
-    "Usage:",
-    "",
-    "  evm-chains-info.js",
-    "    [options]",
-    "    <target-chain>",
-    "",
-    "  options:",
-    "",
-    "     -C --command                    Target command. Can be 'get' or 'set'.",
-    `       <target-command>              Default: '${target_command}`,
-    "",
-    "     -i --input-type                 Input type. It can be 'id' or 'name'.",
-    `       <input-type>                  Default: '${input_type}'`,
-    "",
-    "     -o --output-type                Output type. It can be 'id', 'name',",
-    "       <output-type>                 'rpc', 'explorers'.",
-    `                                     Default: '${output_type}'`,
-    "",
-    "     -m --retrieval-mode             It can be 'offline'.",
-    `       <retrieval-mode>              Default: '${retrieval_mode}'`,
-    "",
-    "     -u --user-level                 It can be 'y' or 'n'.",
-    `       <user-level>                  Default: '${user_level}'`,
-    "",
-    "     -d --db-path                    Path of the chains' info json file",
-    "       <db-path>                     to be used for 'offline' retrieval.",
-    `                                     Default: '${db_paths}'`,
-    "",
-    "     -s --selection-method           When output type is 'rpc',",
-    "       <selection-method>            selection criterion to use when",
-    "                                     more than one is available.",
-    "                                     It can be 'kirsh', 'random' or 'all'.",
-    `                                     Default: '${selection_method}'`,
-    "",
-    "     -k                              If selected, when output type is 'rpc',",
-    "                                     includes the ones requiring an API key.",
-    `                                     Default: '${api_key}'`,
-    "     -a --all                        Whether to show results for all networks.",
-    `                                     Default: '${networks_all}'`,
-    "",
-    "     -h --help                       This message.",
-    "     -v --verbose                    Enable verbose output."
-  ];
+    _line;
+  const
+    _text = [
+      "Returns info about EVM blockchains.",
+      "",
+      "Usage:",
+      "",
+      "  evm-chains-info.js",
+      "    [options]",
+      "    <target-chain>",
+      "",
+      "  options:",
+      "",
+      "     -C --command                    Target command. Can be 'get' or 'set'.",
+      `       <target-command>              Default: '${target_command}`,
+      "",
+      "     -i --input-type                 Input type. It can be 'id' or 'name'.",
+      `       <input-type>                  Default: '${input_type}'`,
+      "",
+      "     -o --output-type                Output type. It can be 'id', 'name',",
+      "       <output-type>                 'rpc', 'explorers'.",
+      `                                     Default: '${output_type}'`,
+      "",
+      "     -m --retrieval-mode             It can be 'offline'.",
+      `       <retrieval-mode>              Default: '${retrieval_mode}'`,
+      "",
+      "     -u --user-level                 It can be 'y' or 'n'.",
+      `       <user-level>                  Default: '${user_level}'`,
+      "",
+      "     -d --db-path                    Path of the chains' info json file",
+      "       <db-path>                     to be used for 'offline' retrieval.",
+      `                                     Default: '${db_paths}'`,
+      "",
+      "     -s --selection-method           When output type is 'rpc',",
+      "       <selection-method>            selection criterion to use when",
+      "                                     more than one is available.",
+      "                                     It can be 'kirsh', 'random' or 'all'.",
+      `                                     Default: '${selection_method}'`,
+      "",
+      "     -k                              If selected, when output type is 'rpc',",
+      "                                     includes the ones requiring an API key.",
+      `                                     Default: '${api_key}'`,
+      "     -a --all                        Whether to show results for all networks.",
+      `                                     Default: '${networks_all}'`,
+      "",
+      "     -h --help                       This message.",
+      "     -v --verbose                    Enable verbose output."
+    ];
   for ( _line of _text ) {
     console.log(
       _line);
   }
-  process.exit(
+  _process_exit(
     _exit_code);
 }
 
