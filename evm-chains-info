@@ -526,9 +526,13 @@ function
     _app_opts) {
   const
     _results =
-  _evm_chains_info.apply(
-    null,
-    app_opts);
+      _evm_chains_info.apply(
+        null,
+        app_opts);
+  for ( _result of _results ) {
+    console.log(
+      _result);
+  }
 }
 
 _global_variables();

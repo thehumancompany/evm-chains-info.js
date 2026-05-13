@@ -461,8 +461,16 @@ function
              _filter_key] == _target_chain ) {
         _results.push(
           _entry);
+        if ( _selection_method == "kirsh" ) {
+          break;
+        }
       }
     }
+    _msg =
+      `Total results returned for '${_db_path}' ` +
+      `are '${_results.length}'.`;
+    _msg_info(
+      _msg);
     return _results;
   }
 }
@@ -621,6 +629,9 @@ function
             _api_key,
             _networks_all,
             _target_chain);
+        if ( _selection_method == "kirsh" ) {
+          break
+	}
       }
       else if ( _input_type == "amount" ) {
         _db =
@@ -652,12 +663,13 @@ function
           if ( _selection_method != "all" ) {
             break;
           }
-	}
+        }
       }
       _db =
         _results;
       _msg =
-        `Found '${_networks_total}' networks.`;
+        `Found '${_networks_total}' ` +
+        `networks in database '${_db_path}'.`;
       _msg_info(
         _msg);
     }
@@ -725,6 +737,9 @@ function
         for ( _rpc of _result) {
           _infos.push(
             _rpc);
+          if ( _selection_method == "kirsh" ) {
+            break;
+	  }
         }
       }
       return _infos;
