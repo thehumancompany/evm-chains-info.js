@@ -150,11 +150,16 @@ function
       `${_chain_id}.json`;
   }
   if ( _user == true ) {
+    const
+      _home_dir =
+        _homedir_get();
     _msg =
-      `Home directory: '${_homedir_get()}'`;
+      `Home directory: '${_home_dir}'`;
+    _msg_info(
+      _msg);
     _db_path =
       _path_join(
-        [ _homedir_get(),
+        [ _home_dir,
           ".config",
           "evm-chains",
           _db_name ]);
@@ -186,7 +191,7 @@ function
       _path_join(
         [ _lib,
           "evm-chains",
-          "chains.json" ]);
+          _db_name ]);
   }
   else {
     _msg =
@@ -378,9 +383,11 @@ function
     _networks_all,
     _target_chain) {
   let
+    _db,
     _filter,
     _filter_key,
     _filter_output_type,
+    _filter_value,
     _results,
     _msg;
   _filter_output_type =
@@ -447,10 +454,9 @@ function
     //     _filter_output_type);
     // _json_read(
     //   _db_path);
-    const
-      _db =
-        _json_read(
-          _db_path);
+    _db =
+      _json_read(
+        _db_path);
     _msg =
       `Database '${_db_path}' ` +
       `contains '${_db.length}' items.`;
