@@ -154,6 +154,9 @@ build-npm:
 	npm \
 	  install \
 	  "."; \
+	chmod \
+	  +x \
+	  "evm-chains-info"; \
 	npm \
 	  pack; \
 	chmod \
