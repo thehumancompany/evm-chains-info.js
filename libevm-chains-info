@@ -498,7 +498,7 @@ function
 }
 
 function
-  _db_path_auto_detect(
+  _db_paths_auto_detect(
     _chain_id) {
   let
     _type_primary,
@@ -791,8 +791,8 @@ function
 module.exports = {
   _data_get:
     _data_get,
-  _db_path_auto_detect:
-    _db_path_auto_detect,
+  _db_paths_auto_detect:
+    _db_paths_auto_detect,
   _evm_chains_db_path_get:
     _evm_chains_db_path_get,
   _evm_chains_info:
