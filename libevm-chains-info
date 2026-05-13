@@ -528,7 +528,7 @@ function
     _input_type) {
   if ( _input_type == "id" ) {
     console.log(
-      _hurr);
+      _input_type);
   }
 }
 
